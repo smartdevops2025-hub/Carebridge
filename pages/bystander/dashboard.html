@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bystander Dashboard | Carebridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/dashboard-style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-hands-helping"></i>
+                <span>Care<span class="highlight">bridge</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="#">
+                    <i class="fas fa-calendar-check"></i> My Jobs
+                </a>
+                <a href="#">
+                    <i class="fas fa-wallet"></i> Earnings
+                </a>
+                <a href="#">
+                    <i class="fas fa-chart-line"></i> Analytics
+                </a>
+            </div>
+            <div class="nav-right">
+                <div class="availability-toggle">
+                    <span class="status-dot online"></span>
+                    <span>Available</span>
+                    <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notif-badge">5</span>
+                </div>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=0a6b8a&color=fff" />
+                    <span>Priya Patel</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h1>Welcome back, Priya! 👋</h1>
+                <p>Here's your professional summary</p>
+            </div>
+            <div class="welcome-actions">
+                <button class="btn-primary">
+                    <i class="fas fa-calendar-alt"></i> View Schedule
+                </button>
+                <button class="btn-secondary">
+                    <i class="fas fa-file-alt"></i> My Performance
+                </button>
+            </div>
+        </section>
+
+        <!-- Verification Status Banner -->
+        <section class="verification-banner verified">
+            <div class="verification-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="verification-info">
+                <h3>✓ Verification Complete</h3>
+                <p>Your profile is fully verified. You're eligible to accept jobs.</p>
+            </div>
+            <div class="verification-details">
+                <span><i class="fas fa-id-card"></i> Aadhaar Verified</span>
+                <span><i class="fas fa-file-invoice"></i> PAN Verified</span>
+                <span><i class="fas fa-user-check"></i> Police Verification</span>
+            </div>
+        </section>
+
+        <!-- Bystander Stats -->
+        <section class="status-cards">
+            <div class="status-card active">
+                <div class="status-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Total Jobs</h3>
+                    <p class="status-number">48</p>
+                    <span class="status-label">Lifetime completed</span>
+                </div>
+            </div>
+            <div class="status-card completed">
+                <div class="status-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Average Rating</h3>
+                    <p class="status-number">4.9 ★</p>
+                    <span class="status-label">From 42 reviews</span>
+                </div>
+            </div>
+            <div class="status-card pending">
+                <div class="status-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Upcoming Jobs</h3>
+                    <p class="status-number">3</p>
+                    <span class="status-label">Next: Dec 20, 2024</span>
+                </div>
+            </div>
+            <div class="status-card total">
+                <div class="status-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Total Earnings</h3>
+                    <p class="status-number">₹1,42,500</p>
+                    <span class="status-label">This month: ₹28,000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Jobs -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2><i class="fas fa-briefcase"></i> Active Jobs</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="booking-cards">
+                <div class="booking-card active">
+                    <div class="booking-status-badge in-progress">In Progress</div>
+                    <div class="booking-header">
+                        <div class="patient-info">
+                            <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=27ae60&color=fff" />
+                            <div>
+                                <h4>Rahul Sharma</h4>
+                                <span class="patient-location">
+                                    <i class="fas fa-map-marker-alt"></i> Kochi, Kerala
+                                </span>
+                            </div>
+                        </div>
+                        <div class="booking-timer">
+                            <i class="fas fa-clock"></i>
+                            <span>2h 15m remaining</span>
+                        </div>
+                    </div>
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Service</span>
+                            <span class="detail-value">Elderly Care</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Started</span>
+                            <span class="detail-value">Dec 18, 2024 9:00 AM</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Duration</span>
+                            <span class="detail-value">4 hours</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Amount</span>
+                            <span class="detail-value">₹1,200</span>
+                        </div>
+                    </div>
+                    <div class="booking-actions">
+                        <button class="btn-chat"><i class="fas fa-comment"></i> Chat</button>
+                        <button class="btn-call"><i class="fas fa-phone"></i> Call</button>
+                        <button class="btn-track"><i class="fas fa-map-marker-alt"></i> Share Location</button>
+                    </div>
+                </div>
+
+                <div class="booking-card active">
+                    <div class="booking-status-badge scheduled">Scheduled</div>
+                    <div class="booking-header">
+                        <div class="patient-info">
+                            <img src="https://ui-avatars.com/api/?name=Meera+Nair&background=27ae60&color=fff" />
+                            <div>
+                                <h4>Meera Nair</h4>
+                                <span class="patient-location">
+                                    <i class="fas fa-map-marker-alt"></i> Trivandrum, Kerala
+                                </span>
+                            </div>
+                        </div>
+                        <div class="booking-timer">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Starts in 2 days</span>
+                        </div>
+                    </div>
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Service</span>
+                            <span class="detail-value">Home Care</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Date</span>
+                            <span class="detail-value">Dec 20, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Duration</span>
+                            <span class="detail-value">6 hours</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Amount</span>
+                            <span class="detail-value">₹1,800</span>
+                        </div>
+                    </div>
+                    <div class="booking-actions">
+                        <button class="btn-chat"><i class="fas fa-comment"></i> Chat</button>
+                        <button class="btn-call"><i class="fas fa-phone"></i> Call</button>
+                        <button class="btn-accept"><i class="fas fa-check"></i> Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job History -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2><i class="fas fa-history"></i> Job History</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Job ID</th>
+                            <th>Patient</th>
+                            <th>Service</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Rating</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-015</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Ananya+Reddy&background=27ae60&color=fff" />
+                                    <span>Ananya Reddy</span>
+                                </div>
+                            </td>
+                            <td>Emergency</td>
+                            <td>Dec 16, 2024</td>
+                            <td>₹3,500</td>
+                            <td><span class="rating">★★★★★</span></td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-012</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Vikram+Singh&background=27ae60&color=fff" />
+                                    <span>Vikram Singh</span>
+                                </div>
+                            </td>
+                            <td>Elderly Care</td>
+                            <td>Dec 14, 2024</td>
+                            <td>₹1,500</td>
+                            <td><span class="rating">★★★★☆</span></td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-010</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Sarah+Khan&background=27ae60&color=fff" />
+                                    <span>Sarah Khan</span>
+                                </div>
+                            </td>
+                            <td>Hospital Stay</td>
+                            <td>Dec 11, 2024</td>
+                            <td>₹2,200</td>
+                            <td><span class="rating">★★★★★</span></td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-008</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=27ae60&color=fff" />
+                                    <span>Rahul Sharma</span>
+                                </div>
+                            </td>
+                            <td>Home Care</td>
+                            <td>Dec 8, 2024</td>
+                            <td>₹1,800</td>
+                            <td><span class="rating">★★★★★</span></td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-006</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Meera+Nair&background=27ae60&color=fff" />
+                                    <span>Meera Nair</span>
+                                </div>
+                            </td>
+                            <td>Emergency</td>
+                            <td>Dec 5, 2024</td>
+                            <td>₹2,800</td>
+                            <td><span class="rating">★★★★☆</span></td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <div class="pagination-info">Showing 1-5 of 48 jobs</div>
+                <div class="pagination-controls">
+                    <button disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>...</button>
+                    <button>10</button>
+                    <button><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts & Analytics -->
+        <section class="charts-grid">
+            <div class="chart-card">
+                <h3>Earnings Overview</h3>
+                <div class="chart-body">
+                    <canvas id="earningsChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Service Distribution</h3>
+                <div class="chart-body">
+                    <canvas id="bystanderServiceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Metrics -->
+        <section class="performance-section">
+            <div class="performance-card">
+                <h3>Performance Metrics</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <span class="metric-label">Completion Rate</span>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width: 97%"></div>
+                        </div>
+                        <span class="metric-value">97%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">On-Time Arrival</span>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width: 94%"></div>
+                        </div>
+                        <span class="metric-value">94%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Patient Satisfaction</span>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width: 98%"></div>
+                        </div>
+                        <span class="metric-value">98%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Response Time</span>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width: 92%"></div>
+                        </div>
+                        <span class="metric-value">92%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="performance-card">
+                <h3>Recent Reviews</h3>
+                <div class="review-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=27ae60&color=fff" />
+                            <div>
+                                <strong>Rahul Sharma</strong>
+                                <span class="review-rating">★★★★★</span>
+                            </div>
+                            <span class="review-date">2 days ago</span>
+                        </div>
+                        <p>"Priya was amazing! She took such good care of my father. Very professional and compassionate."</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-header">
+                            <img src="https://ui-avatars.com/api/?name=Ananya+Reddy&background=27ae60&color=fff" />
+                            <div>
+                                <strong>Ananya Reddy</strong>
+                                <span class="review-rating">★★★★★</span>
+                            </div>
+                            <span class="review-date">5 days ago</span>
+                        </div>
+                        <p>"Excellent service! She arrived on time and handled the emergency situation perfectly."</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-header">
+                            <img src="https://ui-avatars.com/api/?name=Vikram+Singh&background=27ae60&color=fff" />
+                            <div>
+                                <strong>Vikram Singh</strong>
+                                <span class="review-rating">★★★★☆</span>
+                            </div>
+                            <span class="review-date">1 week ago</span>
+                        </div>
+                        <p>"Very knowledgeable and caring
