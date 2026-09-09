@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bystander Management | Carebridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/admin-style.css" />
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-hands-helping"></i>
+                <span>Care<span class="highlight">bridge</span></span>
+                <span class="sidebar-tagline">Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html">
+                    <i class="fas fa-chart-pie"></i> Dashboard
+                </a>
+                <a href="patients.html">
+                    <i class="fas fa-user-injured"></i> Patients
+                    <span class="badge">124</span>
+                </a>
+                <a href="bystanders.html" class="active">
+                    <i class="fas fa-user-nurse"></i> Bystanders
+                    <span class="badge pending">12</span>
+                </a>
+                <a href="bookings.html">
+                    <i class="fas fa-calendar-check"></i> Bookings
+                    <span class="badge">48</span>
+                </a>
+                <a href="reports.html">
+                    <i class="fas fa-file-alt"></i> Reports
+                </a>
+                <a href="#">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+                <a href="../../index.html" class="logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <h1>Bystander Management</h1>
+                    <p>Manage and verify bystander applications</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search bystanders..." />
+                    </div>
+                    <button class="btn-add">
+                        <i class="fas fa-plus"></i> Add Bystander
+                    </button>
+                </div>
+            </header>
+
+            <!-- Verification Stats -->
+            <section class="verification-stats">
+                <div class="verification-card">
+                    <div class="verification-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Pending Verification</h4>
+                        <p class="number">12</p>
+                    </div>
+                </div>
+                <div class="verification-card">
+                    <div class="verification-icon verified">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h4>Verified</h4>
+                        <p class="number">324</p>
+                    </div>
+                </div>
+                <div class="verification-card">
+                    <div class="verification-icon rejected">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div>
+                        <h4>Rejected</h4>
+                        <p class="number">18</p>
+                    </div>
+                </div>
+                <div class="verification-card">
+                    <div class="verification-icon total">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <h4>Total Applied</h4>
+                        <p class="number">356</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bystander Table -->
+            <section class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" /></th>
+                            <th>Bystander</th>
+                            <th>Contact</th>
+                            <th>Experience</th>
+                            <th>Skills</th>
+                            <th>Verification</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=0a6b8a&color=fff" />
+                                    <div>
+                                        <strong>Priya Patel</strong>
+                                        <span>priya@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>+91 98765 43214</td>
+                            <td>5 years</td>
+                            <td>
+                                <span class="skill-tag">Elderly Care</span>
+                                <span class="skill-tag">Post-Surgery</span>
+                            </td>
+                            <td><span class="verification-badge verified">Verified</span></td>
+                            <td><span class="rating">★★★★★</span> 4.9</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="pending-row">
+                            <td><input type="checkbox" /></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Deepak+Verma&background=f39c12&color=fff" />
+                                    <div>
+                                        <strong>Deepak Verma</strong>
+                                        <span>deepak@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>+91 98765 43215</td>
+                            <td>3 years</td>
+                            <td>
+                                <span class="skill-tag">Home Care</span>
+                                <span class="skill-tag">Mobility</span>
+                            </td>
+                            <td>
+                                <span class="verification-badge pending">Pending</span>
+                                <button class="btn-verify-small">Verify</button>
+                            </td>
+                            <td><span class="rating">★★★★☆</span> 4.5</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Sunil+Kumar&background=0a6b8a&color=fff" />
+                                    <div>
+                                        <strong>Sunil Kumar</strong>
+                                        <span>sunil@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>+91 98765 43216</td>
+                            <td>7 years</td>
+                            <td>
+                                <span class="skill-tag">Emergency</span>
+                                <span class="skill-tag">Critical Care</span>
+                            </td>
+                            <td><span class="verification-badge verified">Verified</span></td>
+                            <td><span class="rating">★★★★★</span> 4.8</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Pagination -->
+            <section class="pagination">
+                <div class="pagination-info">
+                    Showing 1-10 of 356 bystanders
+                </div>
+                <div class="pagination-controls">
+                    <button disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>...</button>
+                    <button>36</button>
+                    <button><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
