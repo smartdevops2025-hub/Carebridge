@@ -86,4 +86,4 @@ window.addEventListener('load', () => {
     setTimeout(animateStats, 500);
 });
 
-console.log('🚑 BystanderCare - Care when you need it most');
+console.log('🏥 Carebridge - Connecting families with care');
