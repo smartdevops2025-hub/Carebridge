@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Management | Carebridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/admin-style.css" />
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-hands-helping"></i>
+                <span>Care<span class="highlight">bridge</span></span>
+                <span class="sidebar-tagline">Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html">
+                    <i class="fas fa-chart-pie"></i> Dashboard
+                </a>
+                <a href="patients.html">
+                    <i class="fas fa-user-injured"></i> Patients
+                    <span class="badge">124</span>
+                </a>
+                <a href="bystanders.html">
+                    <i class="fas fa-user-nurse"></i> Bystanders
+                    <span class="badge pending">12</span>
+                </a>
+                <a href="bookings.html" class="active">
+                    <i class="fas fa-calendar-check"></i> Bookings
+                    <span class="badge">48</span>
+                </a>
+                <a href="reports.html">
+                    <i class="fas fa-file-alt"></i> Reports
+                </a>
+                <a href="#">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+                <a href="../../index.html" class="logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <h1>Booking Management</h1>
+                    <p>Track and manage all bookings</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search bookings..." />
+                    </div>
+                    <button class="btn-export">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </header>
+
+            <!-- Booking Status Filters -->
+            <section class="status-filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Pending</button>
+                <button class="filter-btn">Confirmed</button>
+                <button class="filter-btn">In Progress</button>
+                <button class="filter-btn">Completed</button>
+                <button class="filter-btn">Cancelled</button>
+            </section>
+
+            <!-- Booking Table -->
+            <section class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Patient</th>
+                            <th>Bystander</th>
+                            <th>Service</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-001</span></td>
+                            <td><strong>Rahul Sharma</strong></td>
+                            <td>Priya Patel</td>
+                            <td><span class="service-tag hospital">Hospital Stay</span></td>
+                            <td>Dec 15, 2024</td>
+                            <td>₹1,500</td>
+                            <td><span class="booking-status completed">Completed</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-002</span></td>
+                            <td><strong>Meera Nair</strong></td>
+                            <td>Sunil Kumar</td>
+                            <td><span class="service-tag home">Home Care</span></td>
+                            <td>Dec 16, 2024</td>
+                            <td>₹2,000</td>
+                            <td><span class="booking-status in-progress">In Progress</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-003</span></td>
+                            <td><strong>Ananya Reddy</strong></td>
+                            <td>Deepak Verma</td>
+                            <td><span class="service-tag emergency">Emergency</span></td>
+                            <td>Dec 16, 2024</td>
+                            <td>₹3,500</td>
+                            <td><span class="booking-status pending">Pending</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-004</span></td>
+                            <td><strong>Vikram Singh</strong></td>
+                            <td>Neha Jain</td>
+                            <td><span class="service-tag elderly">Elderly Care</span></td>
+                            <td>Dec 17, 2024</td>
+                            <td>₹1,800</td>
+                            <td><span class="booking-status cancelled">Cancelled</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-005</span></td>
+                            <td><strong>Sarah Khan</strong></td>
+                            <td>Rajesh Nair</td>
+                            <td><span class="service-tag hospital">Hospital Stay</span></td>
+                            <td>Dec 18, 2024</td>
+                            <td>₹2,200</td>
+                            <td><span class="booking-status confirmed">Confirmed</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Pagination -->
+            <section class="pagination">
+                <div class="pagination-info">
+                    Showing 1-5 of 48 bookings
+                </div>
+                <div class="pagination-controls">
+                    <button disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>...</button>
+                    <button>10</button>
+                    <button><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
