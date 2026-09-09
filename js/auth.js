@@ -1,4 +1,5 @@
 // ===== AUTHENTICATION SYSTEM =====
+const API_URL = 'http://localhost:5000/api';
 
 // ===== Open Auth Modal =====
 function openAuthModal(type, role = 'patient') {
@@ -48,8 +49,8 @@ function getLoginForm() {
             
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group">
-                    <label>Email or Mobile Number</label>
-                    <input type="text" id="loginEmail" placeholder="you@example.com or 9876543210" required />
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="you@example.com" required />
                 </div>
                 <div class="form-group">
                     <label>Password</label>
@@ -61,21 +62,11 @@ function getLoginForm() {
                     </label>
                     <a href="#" onclick="showForgotPassword()">Forgot password?</a>
                 </div>
-                <button type="submit" class="btn-login">
-                    <i class="fas fa-arrow-right"></i> Login
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <i class="fas fa-spinner fa-spin" style="display:none;"></i>
+                    <span id="loginBtnText">Login</span>
                 </button>
             </form>
-            
-            <div class="auth-divider">or continue with</div>
-            
-            <div class="social-login">
-                <button class="social-btn google">
-                    <i class="fab fa-google"></i> Google
-                </button>
-                <button class="social-btn facebook">
-                    <i class="fab fa-facebook"></i> Facebook
-                </button>
-            </div>
             
             <div class="auth-footer">
                 Don't have an account? 
@@ -195,8 +186,9 @@ function getRegisterForm(role = 'patient') {
                     </label>
                 </div>
                 
-                <button type="submit" class="btn-login">
-                    <i class="fas fa-user-plus"></i> Create Account
+                <button type="submit" class="btn-login" id="registerBtn">
+                    <i class="fas fa-spinner fa-spin" style="display:none;"></i>
+                    <span id="registerBtnText">Create Account</span>
                 </button>
             </form>
             
@@ -206,64 +198,6 @@ function getRegisterForm(role = 'patient') {
             </div>
         </div>
     `;
-}
-
-// ===== Handle Login =====
-function handleLogin(event) {
-    event.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    
-    // In production, call backend API
-    // For demo, simulate login and redirect
-    
-    // Check if user is patient or bystander (mock check)
-    const isPatient = email.includes('patient') || Math.random() > 0.5;
-    
-    // Store user info
-    localStorage.setItem('token', 'mock-jwt-token');
-    localStorage.setItem('userEmail', email);
-    localStorage.setItem('userRole', isPatient ? 'patient' : 'bystander');
-    localStorage.setItem('userName', isPatient ? 'Rahul Sharma' : 'Priya Patel');
-    
-    closeAuthModal();
-    
-    // Redirect to appropriate dashboard
-    if (isPatient) {
-        window.location.href = 'pages/patient/dashboard.html';
-    } else {
-        window.location.href = 'pages/bystander/dashboard.html';
-    }
-}
-
-// ===== Handle Register =====
-function handleRegister(event) {
-    event.preventDefault();
-    const name = document.getElementById('regName').value;
-    const email = document.getElementById('regEmail').value;
-    const mobile = document.getElementById('regMobile').value;
-    const password = document.getElementById('regPassword').value;
-    
-    // Get role from active button
-    const roleBtn = document.querySelector('.auth-role-selector .role-btn.active');
-    const role = roleBtn ? roleBtn.textContent.trim().toLowerCase() : 'patient';
-    
-    // In production, call backend API
-    alert(`✅ Registration successful! Welcome ${name}!`);
-    
-    closeAuthModal();
-    
-    // Store and redirect
-    localStorage.setItem('token', 'mock-jwt-token');
-    localStorage.setItem('userEmail', email);
-    localStorage.setItem('userRole', role);
-    localStorage.setItem('userName', name);
-    
-    if (role === 'patient') {
-        window.location.href = 'pages/patient/dashboard.html';
-    } else {
-        window.location.href = 'pages/bystander/dashboard.html';
-    }
 }
 
 // ===== Switch Login Role =====
@@ -307,9 +241,9 @@ function showForgotPassword() {
             <p class="auth-subtitle">Enter your email to receive reset instructions</p>
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" placeholder="you@example.com" />
+                <input type="email" id="resetEmail" placeholder="you@example.com" />
             </div>
-            <button class="btn-login">
+            <button class="btn-login" onclick="handleResetPassword()">
                 <i class="fas fa-envelope"></i> Send Reset Link
             </button>
             <div class="auth-footer" style="margin-top:16px;">
@@ -319,31 +253,188 @@ function showForgotPassword() {
     `;
 }
 
-// ===== Close Mobile Menu =====
-function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('active');
-    document.body.style.overflow = '';
+function handleResetPassword() {
+    const email = document.getElementById('resetEmail').value;
+    if (!email) {
+        alert('Please enter your email');
+        return;
+    }
+    alert(`📧 Password reset link sent to ${email}`);
+    openAuthModal('login');
 }
 
-// ===== Check if user is already logged in =====
+// ===== HANDLE LOGIN =====
+async function handleLogin(event) {
+    event.preventDefault();
+    
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    const btn = document.getElementById('loginBtn');
+    const btnText = document.getElementById('loginBtnText');
+    const spinner = btn.querySelector('.fa-spinner');
+    
+    // Show loading
+    spinner.style.display = 'inline-block';
+    btnText.textContent = 'Logging in...';
+    btn.disabled = true;
+    
+    try {
+        const response = await fetch(`${API_URL}/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // Store user data
+            localStorage.setItem('token', data.data.token);
+            localStorage.setItem('user', JSON.stringify(data.data.user));
+            localStorage.setItem('userRole', data.data.user.role);
+            localStorage.setItem('userName', data.data.user.full_name);
+            
+            alert('✅ Login successful!');
+            closeAuthModal();
+            
+            // Redirect based on role
+            if (data.data.user.role === 'patient') {
+                window.location.href = 'pages/patient/dashboard.html';
+            } else if (data.data.user.role === 'bystander') {
+                window.location.href = 'pages/bystander/dashboard.html';
+            } else {
+                window.location.href = 'index.html';
+            }
+        } else {
+            alert('❌ ' + data.message);
+        }
+    } catch (error) {
+        console.error('Login Error:', error);
+        alert('❌ Connection error. Please make sure the backend is running.');
+    } finally {
+        // Hide loading
+        spinner.style.display = 'none';
+        btnText.textContent = 'Login';
+        btn.disabled = false;
+    }
+}
+
+// ===== HANDLE REGISTER =====
+async function handleRegister(event) {
+    event.preventDefault();
+    
+    // Get role from active button
+    const roleBtn = document.querySelector('.auth-role-selector .role-btn.active');
+    const role = roleBtn ? roleBtn.textContent.trim().toLowerCase() : 'patient';
+    
+    const name = document.getElementById('regName').value;
+    const email = document.getElementById('regEmail').value;
+    const mobile = document.getElementById('regMobile').value;
+    const password = document.getElementById('regPassword').value;
+    const dob = document.getElementById('regDob')?.value || null;
+    
+    const btn = document.getElementById('registerBtn');
+    const btnText = document.getElementById('registerBtnText');
+    const spinner = btn.querySelector('.fa-spinner');
+    
+    // Build request body
+    const requestBody = {
+        full_name: name,
+        email,
+        mobile,
+        password,
+        role: role === 'patient' ? 'patient' : 'bystander',
+        date_of_birth: dob
+    };
+    
+    // Add role-specific fields
+    if (role === 'bystander') {
+        const aadhaar = document.getElementById('regAadhaar')?.value || '';
+        const pan = document.getElementById('regPan')?.value || '';
+        const experience = document.getElementById('regExperience')?.value || 0;
+        const skillsSelect = document.getElementById('regSkills');
+        const skills = skillsSelect ? Array.from(skillsSelect.selectedOptions).map(opt => opt.value) : [];
+        
+        requestBody.aadhaar_number = aadhaar;
+        requestBody.pan_number = pan;
+        requestBody.experience_years = parseInt(experience) || 0;
+        requestBody.skills = skills;
+    } else {
+        const medical = document.getElementById('regMedical')?.value || '';
+        const service = document.getElementById('regService')?.value || 'home_care';
+        requestBody.medical_conditions = medical;
+        requestBody.preferred_service = service;
+    }
+    
+    // Show loading
+    spinner.style.display = 'inline-block';
+    btnText.textContent = 'Creating account...';
+    btn.disabled = true;
+    
+    try {
+        const response = await fetch(`${API_URL}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            alert('✅ Registration successful! Please login.');
+            closeAuthModal();
+            openAuthModal('login');
+        } else {
+            alert('❌ ' + data.message);
+        }
+    } catch (error) {
+        console.error('Registration Error:', error);
+        alert('❌ Connection error. Please make sure the backend is running.');
+    } finally {
+        // Hide loading
+        spinner.style.display = 'none';
+        btnText.textContent = 'Create Account';
+        btn.disabled = false;
+    }
+}
+
+// ===== CHECK IF USER IS LOGGED IN =====
 function checkAuth() {
     const token = localStorage.getItem('token');
-    const role = localStorage.getItem('userRole');
+    const user = localStorage.getItem('user');
     
-    if (token && role) {
-        // Redirect to appropriate dashboard
-        if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-            if (role === 'patient') {
-                window.location.href = 'pages/patient/dashboard.html';
-            } else if (role === 'bystander') {
-                window.location.href = 'pages/bystander/dashboard.html';
+    if (token && user) {
+        const userData = JSON.parse(user);
+        // Update UI to show logged in state
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks) {
+            const loginBtn = navLinks.querySelector('.btn-outline');
+            const registerBtn = navLinks.querySelector('.register-btn');
+            if (loginBtn) loginBtn.textContent = 'Dashboard';
+            if (registerBtn) {
+                registerBtn.textContent = userData.full_name || 'Profile';
+                registerBtn.style.background = '#27ae60';
+                registerBtn.style.color = 'white';
+                registerBtn.onclick = function(e) {
+                    e.preventDefault();
+                    if (userData.role === 'patient') {
+                        window.location.href = 'pages/patient/dashboard.html';
+                    } else if (userData.role === 'bystander') {
+                        window.location.href = 'pages/bystander/dashboard.html';
+                    }
+                };
             }
         }
     }
 }
 
-// ===== Initialize =====
+// ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', function() {
-    // Check auth on page load
-    // checkAuth(); // Uncomment when ready
+    // Check if user is logged in
+    checkAuth();
 });
