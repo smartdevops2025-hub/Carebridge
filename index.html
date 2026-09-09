@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+    <!-- ===== TOP NAVIGATION ===== -->
     <nav class="top-nav">
         <div class="container">
             <div class="nav-brand">
@@ -21,8 +22,9 @@
                 <a href="#for-patients">For Patients</a>
                 <a href="#for-bystanders">For Bystanders</a>
                 <a href="#about">About</a>
-                <a href="pages/login.html" class="btn-outline">Login</a>
-                <a href="pages/patient-register.html" class="register-btn">Register</a>
+                <!-- Login/Register buttons that open modals -->
+                <a href="#" class="btn-outline" onclick="openAuthModal('login')">Login</a>
+                <a href="#" class="register-btn" onclick="openAuthModal('register')">Register</a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -30,6 +32,7 @@
         </div>
     </nav>
 
+    <!-- ===== HERO SECTION ===== -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
@@ -47,10 +50,10 @@
                         and <strong>for bystanders seeking meaningful work</strong>.
                     </p>
                     <div class="hero-actions">
-                        <a href="pages/patient-register.html" class="btn-hero">
+                        <a href="#" class="btn-hero" onclick="openAuthModal('register', 'patient')">
                             <i class="fas fa-user-plus"></i> Register as Patient
                         </a>
-                        <a href="pages/bystander-register.html" class="btn-hero">
+                        <a href="#" class="btn-hero" onclick="openAuthModal('register', 'bystander')">
                             <i class="fas fa-briefcase"></i> Register as Bystander
                         </a>
                     </div>
@@ -91,6 +94,7 @@
         </div>
     </section>
 
+    <!-- ===== HOW IT WORKS ===== -->
     <section id="how-it-works" class="how-it-works">
         <div class="container">
             <div class="section-header">
@@ -127,6 +131,7 @@
         </div>
     </section>
 
+    <!-- ===== FOR PATIENTS ===== -->
     <section id="for-patients" class="for-patients">
         <div class="container">
             <div class="section-header">
@@ -156,9 +161,15 @@
                     <p>All services covered under our safety protocol &amp; insurance policy.</p>
                 </div>
             </div>
+            <div class="cta-center" style="margin-top:40px;">
+                <a href="#" class="btn-primary btn-large" onclick="openAuthModal('register', 'patient')">
+                    <i class="fas fa-user-plus"></i> Register as Patient
+                </a>
+            </div>
         </div>
     </section>
 
+    <!-- ===== FOR BYSTANDERS ===== -->
     <section id="for-bystanders" class="for-bystanders">
         <div class="container">
             <div class="section-header">
@@ -188,15 +199,15 @@
                     <p>Skill development, certifications, and performance-based incentives.</p>
                 </div>
             </div>
-            <div class="cta-center">
-                <a href="pages/bystander-register.html" class="btn-primary btn-large">
+            <div class="cta-center" style="margin-top:40px;">
+                <a href="#" class="btn-primary btn-large" onclick="openAuthModal('register', 'bystander')">
                     <i class="fas fa-user-check"></i> Apply as Bystander
                 </a>
-                <span class="cta-note">Free registration · No hidden charges</span>
             </div>
         </div>
     </section>
 
+    <!-- ===== ABOUT ===== -->
     <section id="about" class="about">
         <div class="container">
             <div class="about-grid">
@@ -227,6 +238,7 @@
         </div>
     </section>
 
+    <!-- ===== CTA SECTION ===== -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-box">
@@ -235,10 +247,10 @@
                     <p>Join thousands of patients and bystanders who trust Carebridge</p>
                 </div>
                 <div class="cta-buttons">
-                    <a href="pages/patient-register.html" class="btn-white">
+                    <a href="#" class="btn-white" onclick="openAuthModal('register', 'patient')">
                         <i class="fas fa-user-plus"></i> I'm a Patient
                     </a>
-                    <a href="pages/bystander-register.html" class="btn-outline-light">
+                    <a href="#" class="btn-outline-light" onclick="openAuthModal('register', 'bystander')">
                         <i class="fas fa-briefcase"></i> I'm a Bystander
                     </a>
                 </div>
@@ -246,6 +258,7 @@
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -287,6 +300,25 @@
         </div>
     </footer>
 
+    <!-- ===== AUTH MODAL (Login/Register) ===== -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <div class="auth-brand">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>Care<span class="highlight">bridge</span></span>
+                </div>
+                <button class="auth-close" onclick="closeAuthModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="auth-body" id="authBody">
+                <!-- Dynamic content loaded via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MOBILE MENU ===== -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <i class="fas fa-hands-helping"></i>
@@ -297,10 +329,11 @@
         <a href="#for-patients">For Patients</a>
         <a href="#for-bystanders">For Bystanders</a>
         <a href="#about">About</a>
-        <a href="pages/login.html">Login</a>
-        <a href="pages/patient-register.html" class="mobile-register">Register</a>
+        <a href="#" onclick="openAuthModal('login');closeMobileMenu();">Login</a>
+        <a href="#" onclick="openAuthModal('register');closeMobileMenu();" class="mobile-register">Register</a>
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 </html>
