@@ -1,5 +1,4 @@
-# Carebridge - Connecting families with care
-Care marketplace connecting patients with verified bystanders
+# Carebridge - Connecting Families with Care
 
 A two-sided service marketplace connecting patients with verified bystanders for hospital and home care support.
 
