@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Available Jobs | Carebridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/dashboard-style.css" />
+</head>
+<body>
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-hands-helping"></i>
+                <span>Care<span class="highlight">bridge</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="jobs.html" class="active">
+                    <i class="fas fa-briefcase"></i> Available Jobs
+                    <span class="badge" id="jobCount">3</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-calendar-check"></i> My Jobs
+                </a>
+                <a href="#">
+                    <i class="fas fa-wallet"></i> Earnings
+                </a>
+            </div>
+            <div class="nav-right">
+                <div class="availability-toggle">
+                    <span class="status-dot online"></span>
+                    <span>Available</span>
+                    <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=0a6b8a&color=fff" />
+                    <span>Priya Patel</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h1>Available Jobs</h1>
+                <p>Review and accept patient requests</p>
+            </div>
+            <div class="welcome-actions">
+                <button class="btn-secondary" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </button>
+            </div>
+        </section>
+
+        <!-- Filter Bar -->
+        <section class="filter-bar" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+            <select style="padding:10px 16px;border:2px solid #e8edf2;border-radius:10px;">
+                <option>All Services</option>
+                <option>Hospital Stay</option>
+                <option>Home Care</option>
+                <option>Emergency</option>
+                <option>Elderly Care</option>
+            </select>
+            <select style="padding:10px 16px;border:2px solid #e8edf2;border-radius:10px;">
+                <option>All Locations</option>
+                <option>Kochi</option>
+                <option>Trivandrum</option>
+                <option>Kozhikode</option>
+            </select>
+            <select style="padding:10px 16px;border:2px solid #e8edf2;border-radius:10px;">
+                <option>Sort by: Newest</option>
+                <option>Sort by: Distance</option>
+                <option>Sort by: Urgency</option>
+            </select>
+        </section>
+
+        <!-- Job Requests List -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2><i class="fas fa-bell"></i> All Job Requests</h2>
+                <span class="badge" style="background:var(--primary);color:white;padding:4px 12px;border-radius:20px;">3 available</span>
+            </div>
+            <div id="allJobRequests">
+                <!-- Full list of job requests -->
+            </div>
+        </section>
+
+        <!-- No Jobs Message -->
+        <div id="noJobsMessage" style="display:none;text-align:center;padding:60px 20px;background:white;border-radius:16px;box-shadow:var(--shadow);">
+            <i class="fas fa-check-circle" style="font-size:3rem;color:var(--success);"></i>
+            <h3 style="margin-top:16px;">No job requests available</h3>
+            <p style="color:var(--text-light);">Check back later for new requests from patients</p>
+        </div>
+    </div>
+
+    <script>
+        // ===== JOB DATA =====
+        const jobRequests = [
+            {
+                id: '#REQ-2024-008',
+                patient: 'Meera Nair',
+                service: 'Home Care',
+                location: 'Trivandrum, Kerala',
+                date: 'Dec 20, 2024',
+                duration: '4 hours',
+                amount: 1500,
+                urgency: 'High',
+                timeAgo: '5 minutes ago',
+                patientRating: 4.7,
+                distance: '2.5 km',
+                description: 'Need assistance with daily activities and medication management for elderly mother.'
+            },
+            {
+                id: '#REQ-2024-009',
+                patient: 'Ananya Reddy',
+                service: 'Emergency Support',
+                location: 'Kochi, Kerala',
+                date: 'Dec 19, 2024',
+                duration: '6 hours',
+                amount: 2800,
+                urgency: 'Critical',
+                timeAgo: '15 minutes ago',
+                patientRating: 4.9,
+                distance: '3.8 km',
+                description: 'Post-surgery care required. Patient needs assistance with mobility and wound care.'
+            },
+            {
+                id: '#REQ-2024-010',
+                patient: 'Vikram Singh',
+                service: 'Elderly Care',
+                location: 'Kozhikode, Kerala',
+                date: 'Dec 21, 2024',
+                duration: '8 hours',
+                amount: 2200,
+                urgency: 'Medium',
+                timeAgo: '45 minutes ago',
+                patientRating: 4.5,
+                distance: '12 km',
+                description: 'Need overnight care for elderly father with dementia. Requires patience and experience.'
+            }
+        ];
+
+        // ===== Populate Job Requests =====
+        function populateJobs() {
+            const container = document.getElementById('allJobRequests');
+            const noJobs = document.getElementById('noJobsMessage');
+            
+            if (jobRequests.length === 0) {
+                container.style.display = 'none';
+                noJobs.style.display = 'block';
+                document.getElementById('jobCount').textContent = '0';
+                return;
+            }
+
+            container.style.display = 'block';
+            noJobs.style.display = 'none';
+            document.getElementById('jobCount').textContent = jobRequests.length;
+
+            container.innerHTML = jobRequests.map((job, index) => `
+                <div class="job-request-card" style="border:1px solid #eef3f7;border-radius:12px;padding:20px;margin-bottom:16px;transition:all 0.3s;background:${job.urgency === 'Critical' ? '#fef5f5' : job.urgency === 'High' ? '#fefcf0' : 'white'};border-left:4px solid ${job.urgency === 'Critical' ? '#e74c3c' : job.urgency === 'High' ? '#f39c12' : '#2ecc71'};">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+                        <div style="display:flex;align-items:center;gap:16px;">
+                            <img src="https://ui-avatars.com/api/?name=${job.patient.replace(' ', '+')}&background=27ae60&color=fff" style="width:56px;height:56px;border-radius:50%;object-fit:cover;" />
+                            <div>
+                                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                                    <h3 style="font-weight:700;">${job.patient}</h3>
+                                    <span style="font-size:0.8rem;color:#f39c12;">⭐ ${job.patientRating}</span>
+                                    <span class="status-badge ${job.urgency === 'Critical' ? 'cancelled' : 'pending'}" style="background:${job.urgency === 'Critical' ? '#fde8e8' : '#fef5e0'};color:${job.urgency === 'Critical' ? '#e74c3c' : '#f39c12'};">
+                                        ${job.urgency} Urgency
+                                    </span>
+                                </div>
+                                <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:4px;font-size:0.85rem;color:var(--text-light);">
+                                    <span><i class="fas fa-briefcase"></i> ${job.service}</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> ${job.location} (${job.distance})</span>
+                                    <span><i class="fas fa-calendar-alt"></i> ${job.date}</span>
+                                    <span><i class="fas fa-clock"></i> ${job.duration}</span>
+                                    <span><i class="fas fa-clock"></i> ${job.timeAgo}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+                            <span style="font-weight:800;font-size:1.3rem;color:var(--primary);">₹${job.amount}</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin:12px 0;padding:12px;background:#f8fafc;border-radius:8px;">
+                        <p style="font-size:0.9rem;color:var(--text-light);"><i class="fas fa-info-circle" style="color:var(--primary);"></i> ${job.description}</p>
+                    </div>
+                    
+                    <div style="display:flex;gap:10px;border-top:1px solid #eef3f7;padding-top:14px;flex-wrap:wrap;">
+                        <button class="btn-accept" onclick="acceptJob('${job.id}', '${job.patient}')" style="flex:2;padding:12px 24px;background:var(--success);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:8px;">
+                            <i class="fas fa-check-circle"></i> Accept Job
+                        </button>
+                        <button class="btn-decline" onclick="declineJob('${job.id}')" style="flex:1;padding:12px 24px;background:#fde8e8;color:var(--danger);border:2px solid #fde8e8;border-radius:8px;font-weight:600;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:8px;">
+                            <i class="fas fa-times"></i> Decline
+                        </button>
+                        <button class="btn-chat" style="flex:0.5;padding:12px;background:#dbeafe;color:var(--info);border:none;border-radius:8px;cursor:pointer;transition:all 0.3s;">
+                            <i class="fas fa-comment"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== Accept Job =====
+        function acceptJob(jobId, patientName) {
+            if (confirm(`Accept job from ${patientName}?`)) {
+                // In production, call backend API
+                alert(`✅ You have accepted the job from ${patientName}!`);
+                
+                // Remove from list
+                const index = jobRequests.findIndex(j => j.id === jobId);
+                if (index > -1) {
+                    jobRequests.splice(index, 1);
+                    populateJobs();
+                    
+                    // Simulate SMS notification to patient
+                    notifyPatient(patientName);
+                }
+            }
+        }
+
+        // ===== Decline Job =====
+        function declineJob(jobId) {
+            if (confirm('Decline this job request?')) {
+                const index = jobRequests.findIndex(j => j.id === jobId);
+                if (index > -1) {
+                    jobRequests.splice(index, 1);
+                    populateJobs();
+                    alert('Job declined.');
+                }
+            }
+        }
+
+        // ===== Notify Patient =====
+        function notifyPatient(patientName) {
+            // In production, this calls the backend API
+            console.log(`📱 SMS sent to patient ${patientName}: Your bystander has accepted the job!`);
+            
+            // Show browser notification
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('Carebridge', {
+                    body: `✅ Your booking has been accepted by a bystander!`,
+                    icon: 'https://carebridge.com/icon.png'
+                });
+            }
+        }
+
+        // ===== Request Notification Permission =====
+        if ('Notification' in window) {
+            Notification.requestPermission();
+        }
+
+        // ===== Initialize =====
+        document.addEventListener('DOMContentLoaded', populateJobs);
+    </script>
+</body>
+</html>
