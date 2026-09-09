@@ -120,6 +120,101 @@ img {
     transform: scale(0.95);
 }
 
+/* ===== HERO BUTTONS - Both match exactly ===== */
+
+/* Primary hero button - Solid blue background */
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hero-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-hero-primary:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.btn-hero-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(10, 107, 138, 0.4);
+}
+
+.btn-hero-primary:active {
+    transform: scale(0.95);
+}
+
+/* Secondary hero button - Outlined with same style as primary but transparent */
+.btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--primary);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hero-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(10, 107, 138, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-hero-secondary:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.btn-hero-secondary:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(10, 107, 138, 0.25);
+}
+
+.btn-hero-secondary:active {
+    transform: scale(0.95);
+}
+
 /* Primary button - Solid (used elsewhere) */
 .btn-primary {
     display: inline-flex;
@@ -845,5 +940,19 @@ img {
     }
     .nav-brand i {
         font-size: 1.6rem;
+    }
+    .btn-hero-primary, .btn-hero-secondary {
+        padding: 14px 28px;
+        font-size: 0.95rem;
+        width: 100%;
+        justify-content: center;
+    }
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .hero-actions a {
+        width: 100%;
+        justify-content: center;
     }
 }
