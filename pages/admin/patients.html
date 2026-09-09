@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Management | Carebridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/admin-style.css" />
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-hands-helping"></i>
+                <span>Care<span class="highlight">bridge</span></span>
+                <span class="sidebar-tagline">Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html">
+                    <i class="fas fa-chart-pie"></i> Dashboard
+                </a>
+                <a href="patients.html" class="active">
+                    <i class="fas fa-user-injured"></i> Patients
+                    <span class="badge">124</span>
+                </a>
+                <a href="bystanders.html">
+                    <i class="fas fa-user-nurse"></i> Bystanders
+                    <span class="badge pending">12</span>
+                </a>
+                <a href="bookings.html">
+                    <i class="fas fa-calendar-check"></i> Bookings
+                    <span class="badge">48</span>
+                </a>
+                <a href="reports.html">
+                    <i class="fas fa-file-alt"></i> Reports
+                </a>
+                <a href="#">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+                <a href="../../index.html" class="logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <h1>Patient Management</h1>
+                    <p>Manage all registered patients</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search patients..." />
+                    </div>
+                    <button class="btn-add">
+                        <i class="fas fa-plus"></i> Add Patient
+                    </button>
+                </div>
+            </header>
+
+            <!-- Filter Bar -->
+            <section class="filter-bar">
+                <div class="filter-group">
+                    <label>Filter by:</label>
+                    <select>
+                        <option>All Patients</option>
+                        <option>Active</option>
+                        <option>Inactive</option>
+                        <option>New</option>
+                    </select>
+                    <select>
+                        <option>All Services</option>
+                        <option>Hospital Stay</option>
+                        <option>Home Care</option>
+                        <option>Emergency</option>
+                        <option>Elderly Care</option>
+                    </select>
+                    <input type="date" placeholder="From" />
+                    <input type="date" placeholder="To" />
+                </div>
+                <button class="btn-export">
+                    <i class="fas fa-download"></i> Export
+                </button>
+            </section>
+
+            <!-- Patient Table -->
+            <section class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" /></th>
+                            <th>Patient</th>
+                            <th>Contact</th>
+                            <th>Service Type</th>
+                            <th>Bookings</th>
+                            <th>Rating</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=0a6b8a&color=fff" />
+                                    <div>
+                                        <strong>Rahul Sharma</strong>
+                                        <span>rahul@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>+91 98765 43210</td>
+                            <td><span class="service-tag hospital">Hospital Stay</span></td>
+                            <td>8</td>
+                            <td><span class="rating">★★★★☆</span> 4.2</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view" title="View"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Meera+Nair&background=0a6b8a&color=fff" />
+                                    <div>
+                                        <strong>Meera Nair</strong>
+                                        <span>meera@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>+91 98765 43211</td>
+                            <td><span class="service-tag home">Home Care</span></td>
+                            <td>5</td>
+                            <td><span class="rating">★★★★★</span> 4.8</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Ananya+Reddy&background=0a6b8a&color=fff" />
+                                    <div>
+                                        <strong>Ananya Reddy</strong>
+                                        <span>ananya@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>+91 98765 43212</td>
+                            <td><span class="service-tag emergency">Emergency</span></td>
+                            <td>12</td>
+                            <td><span class="rating">★★★★☆</span> 4.5</td>
+                            <td><span class="status-badge inactive">Inactive</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Vikram+Singh&background=0a6b8a&color=fff" />
+                                    <div>
+                                        <strong>Vikram Singh</strong>
+                                        <span>vikram@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>+91 98765 43213</td>
+                            <td><span class="service-tag elderly">Elderly Care</span></td>
+                            <td>3</td>
+                            <td><span class="rating">★★★☆☆</span> 3.8</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Pagination -->
+            <section class="pagination">
+                <div class="pagination-info">
+                    Showing 1-10 of 124 patients
+                </div>
+                <div class="pagination-controls">
+                    <button disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>...</button>
+                    <button>13</button>
+                    <button><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
