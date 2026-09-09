@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register as Bystander | BystanderCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+        .register-container {
+            max-width: 560px;
+            margin: 40px auto;
+            background: white;
+            padding: 48px 40px;
+            border-radius: 24px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+        }
+        .register-container h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .register-container p.sub {
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e8edf2;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(10,107,138,0.1);
+        }
+        .form-group .input-hint {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-group .otp-row {
+            display: flex;
+            gap: 12px;
+        }
+        .form-group .otp-row input {
+            flex: 1;
+        }
+        .btn-otp {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: none;
+            padding: 0 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .btn-otp:hover {
+            background: #c0dde8;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+        .register-footer {
+            text-align: center;
+            margin-top: 24px;
+            color: var(--text-light);
+        }
+        .register-footer a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--primary);
+        }
+        .required-star {
+            color: var(--accent);
+        }
+        .upload-area {
+            border: 2px dashed #d0dde6;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .upload-area:hover {
+            border-color: var(--primary);
+            background: #f8fafc;
+        }
+        .upload-area i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .upload-area p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .upload-area .file-types {
+            font-size: 0.75rem;
+            color: #9aafbe;
+        }
+        @media (max-width: 600px) {
+            .register-container {
+                padding: 30px 20px;
+                margin: 20px 16px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h2><i class="fas fa-briefcase" style="color:var(--primary);margin-right:10px;"></i>Bystander Registration</h2>
+        <p class="sub">Apply to become a verified bystander. Earn while helping patients.</p>
+
+        <form id="bystanderRegisterForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name <span class="required-star">*</span></label>
+                    <input type="text" placeholder="John Doe" required />
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth <span class="required-star">*</span></label>
+                    <input type="date" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address <span class="required-star">*</span></label>
+                <input type="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+                <label>Mobile Number <span class="required-star">*</span></label>
+                <div class="otp-row">
+                    <input type="tel" placeholder="9876543210" required />
+                    <button type="button" class="btn-otp">Send OTP</button>
+                </div>
+                <div class="input-hint">We'll send a verification code to this number</div>
+            </div>
+
+            <div class="form-group">
+                <label>OTP <span class="required-star">*</span></label>
+                <input type="text" placeholder="Enter 6-digit OTP" required />
+            </div>
+
+            <div class="form-group">
+                <label>Aadhaar Number <span class="required-star">*</span></label>
+                <input type="text" placeholder="1234 5678 9012" required />
+            </div>
+
+            <div class="form-group">
+                <label>PAN Card Number <span class="required-star">*</span></label>
+                <input type="text" placeholder="ABCDE1234F" required />
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Bank Account Number <span class="required-star">*</span></label>
+                    <input type="text" placeholder="Account number" required />
+                </div>
+                <div class="form-group">
+                    <label>IFSC Code <span class="required-star">*</span></label>
+                    <input type="text" placeholder="SBIN0001234" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Aadhaar <span class="required-star">*</span></label>
+                <div class="upload-area" onclick="document.getElementById('aadhaarUpload').click()">
+                    <i class="fas fa-id-card"></i>
+                    <p>Click to upload Aadhaar (PDF/Image)</p>
+                    <span class="file-types">Max 5MB, JPG, PNG, PDF</span>
+                    <input type="file" id="aadhaarUpload" accept=".jpg,.jpeg,.png,.pdf" style="display:none;" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Upload PAN Card <span class="required-star">*</span></label>
+                <div class="upload-area" onclick="document.getElementById('panUpload').click()">
+                    <i class="fas fa-file-invoice"></i>
+                    <p>Click to upload PAN (PDF/Image)</p>
+                    <span class="file-types">Max 5MB, JPG, PNG, PDF</span>
+                    <input type="file" id="panUpload" accept=".jpg,.jpeg,.png,.pdf" style="display:none;" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Selfie / Photo <span class="required-star">*</span></label>
+                <div class="upload-area" onclick="document.getElementById('selfieUpload').click()">
+                    <i class="fas fa-camera"></i>
+                    <p>Click to upload your photo</p>
+                    <span class="file-types">Max 5MB, JPG, PNG</span>
+                    <input type="file" id="selfieUpload" accept=".jpg,.jpeg,.png" style="display:none;" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Experience Certificate (Optional)</label>
+                <div class="upload-area" onclick="document.getElementById('expUpload').click()">
+                    <i class="fas fa-certificate"></i>
+                    <p>Upload experience certificate (if any)</p>
+                    <span class="file-types">Max 5MB, PDF</span>
+                    <input type="file" id="expUpload" accept=".pdf" style="display:none;" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Current Address <span class="required-star">*</span></label>
+                <textarea rows="2" placeholder="Full address with landmark" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>City <span class="required-star">*</span></label>
+                    <input type="text" placeholder="Kochi" required />
+                </div>
+                <div class="form-group">
+                    <label>State <span class="required-star">*</span></label>
+                    <input type="text" placeholder="Kerala" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Skills / Expertise <span class="required-star">*</span></label>
+                <select multiple style="height:80px;" required>
+                    <option>Elderly Care</option>
+                    <option>Post-Surgery Support</option>
+                    <option>Mobility Assistance</option>
+                    <option>Medication Reminder</option>
+                    <option>Companionship</option>
+                    <option>Special Needs Care</option>
+                </select>
+                <div class="input-hint">Hold Ctrl (Cmd) to select multiple</div>
+            </div>
+
+            <div class="form-group" style="display:flex;gap:12px;align-items:flex-start;margin-top:24px;">
+                <input type="checkbox" id="agreement" required style="width:20px;margin-top:4px;" />
+                <label for="agreement" style="font-weight:400;font-size:0.9rem;">
+                    I agree to the <a href="#" style="color:var(--primary);">Partner Agreement</a>, 
+                    <a href="#" style="color:var(--primary);">Terms & Conditions</a> and 
+                    <a href="#" style="color:var(--primary);">Privacy Policy</a>. I confirm all documents are genuine.
+                    <span class="required-star">*</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-user-check"></i> Submit Application
+            </button>
+
+            <div class="register-footer">
+                Already applied? <a href="login.html">Login to check status</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('bystanderRegisterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Application submitted! Our team will verify your documents within 24-48 hours.');
+        });
+
+        document.querySelectorAll('.upload-area input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const parent = this.closest('.upload-area');
+                const p = parent.querySelector('p');
+                if (this.files.length > 0) {
+                    p.textContent = '📄 ' + this.files[0].name;
+                    p.style.color = 'var(--primary)';
+                } else {
+                    p.textContent = 'Click to upload';
+                    p.style.color = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
