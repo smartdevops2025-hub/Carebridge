@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Booking | Carebridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/dashboard-style.css" />
+    <style>
+        .booking-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+        .booking-form-container h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .booking-form-container .sub {
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+        .form-group label .required {
+            color: #e74c3c;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e8edf2;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(10,107,138,0.08);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(10,107,138,0.3);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--primary);
+        }
+        .price-estimate {
+            background: var(--primary-light);
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 16px 0;
+        }
+        .price-estimate .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .booking-form-container {
+                padding: 20px;
+                margin: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-hands-helping"></i>
+                <span>Care<span class="highlight">bridge</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="new-booking.html" class="active">
+                    <i class="fas fa-plus-circle"></i> New Booking
+                </a>
+                <a href="#">
+                    <i class="fas fa-calendar-check"></i> My Bookings
+                </a>
+                <a href="#">
+                    <i class="fas fa-wallet"></i> Payments
+                </a>
+            </div>
+            <div class="nav-right">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=0a6b8a&color=fff" />
+                    <span>Rahul Sharma</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="booking-form-container">
+            <a href="dashboard.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            
+            <h2><i class="fas fa-plus-circle" style="color:var(--primary);"></i> Request a Bystander</h2>
+            <p class="sub">Fill in the details below to find the right support for you</p>
+
+            <form id="bookingForm" onsubmit="submitBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Service Type <span class="required">*</span></label>
+                        <select id="serviceType" required onchange="updateEstimate()">
+                            <option value="">Select service...</option>
+                            <option value="hospital_stay">Hospital Stay Support</option>
+                            <option value="home_care">Home Care</option>
+                            <option value="emergency">Emergency Support</option>
+                            <option value="elderly_care">Elderly Care</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Date <span class="required">*</span></label>
+                        <input type="date" id="serviceDate" required />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Start Time <span class="required">*</span></label>
+                        <input type="time" id="startTime" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Duration (Hours) <span class="required">*</span></label>
+                        <select id="duration" required onchange="updateEstimate()">
+                            <option value="1">1 hour</option>
+                            <option value="2">2 hours</option>
+                            <option value="3">3 hours</option>
+                            <option value="4" selected>4 hours</option>
+                            <option value="6">6 hours</option>
+                            <option value="8">8 hours</option>
+                            <option value="12">12 hours</option>
+                            <option value="24">24 hours</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Location / Address <span class="required">*</span></label>
+                    <input type="text" id="location" placeholder="Enter your full address" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Special Requirements</label>
+                    <textarea id="requirements" rows="3" placeholder="Any specific care needs, medical conditions, or special instructions..."></textarea>
+                </div>
+
+                <!-- Price Estimate -->
+                <div class="price-estimate">
+                    <p style="margin-bottom:4px;">Estimated Price</p>
+                    <p class="price" id="priceDisplay">₹1,200</p>
+                    <p style="font-size:0.85rem;color:var(--text-light);">*Final price may vary based on location and bystander</p>
+                </div>
+
+                <div class="form-group" style="display:flex;gap:12px;align-items:flex-start;">
+                    <input type="checkbox" id="terms" required style="width:20px;margin-top:4px;" />
+                    <label for="terms" style="font-weight:400;font-size:0.9rem;">
+                        I confirm the details are correct and agree to the 
+                        <a href="#" style="color:var(--primary);">Terms & Conditions</a>
+                        <span class="required">*</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> Request Bystander
+                </button>
+            </form>
+
+            <div style="margin-top:16px;text-align:center;font-size:0.85rem;color:var(--text-light);">
+                <i class="fas fa-shield-alt"></i> Your request will be sent to verified bystanders nearby
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Price Calculator =====
+        const basePrices = {
+            hospital_stay: 300,
+            home_care: 250,
+            emergency: 400,
+            elderly_care: 200
+        };
+
+        function updateEstimate() {
+            const service = document.getElementById('serviceType').value;
+            const duration = parseInt(document.getElementById('duration').value) || 4;
+            
+            const basePrice = basePrices[service] || 250;
+            const total = basePrice * duration;
+            
+            document.getElementById('priceDisplay').textContent = `₹${total.toLocaleString()}`;
+        }
+
+        // ===== Submit Booking =====
+        function submitBooking(event) {
+            event.preventDefault();
+            
+            const service = document.getElementById('serviceType');
+            const date = document.getElementById('serviceDate');
+            const time = document.getElementById('startTime');
+            const duration = document.getElementById('duration');
+            const location = document.getElementById('location');
+            
+            if (!service.value || !date.value || !time.value || !location.value) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // In production, send to backend API
+            const bookingData = {
+                service: service.value,
+                date: date.value,
+                time: time.value,
+                duration: duration.value,
+                location: location.value,
+                requirements: document.getElementById('requirements').value,
+                price: document.getElementById('priceDisplay').textContent
+            };
+
+            // Simulate API call
+            alert('✅ Your booking request has been sent!');
+            console.log('Booking Data:', bookingData);
+            
+            // Redirect to dashboard
+            window.location.href = 'dashboard.html';
+        }
+
+        // ===== Set minimum date to today =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('serviceDate').min = today;
+        });
+    </script>
+</body>
+</html>
