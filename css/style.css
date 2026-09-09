@@ -73,7 +73,7 @@ img {
     background: rgba(10, 107, 138, 0.05);
 }
 
-/* Register button - Same as Login but with animation */
+/* Register button (top nav) - Same as Login but with animation */
 .register-btn {
     display: inline-flex;
     align-items: center;
@@ -90,7 +90,6 @@ img {
     overflow: hidden;
 }
 
-/* Ripple animation on hover */
 .register-btn::before {
     content: '';
     position: absolute;
@@ -120,10 +119,8 @@ img {
     transform: scale(0.95);
 }
 
-/* ===== HERO BUTTONS - Both match exactly ===== */
-
-/* Primary hero button - Solid blue background */
-.btn-hero-primary {
+/* ===== HERO BUTTONS - BOTH MATCH EXACTLY ===== */
+.btn-hero {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -140,7 +137,8 @@ img {
     overflow: hidden;
 }
 
-.btn-hero-primary::before {
+/* Ripple animation for both buttons */
+.btn-hero::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -148,70 +146,23 @@ img {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     transform: translate(-50%, -50%);
     transition: width 0.6s ease, height 0.6s ease;
 }
 
-.btn-hero-primary:hover::before {
+.btn-hero:hover::before {
     width: 400px;
     height: 400px;
 }
 
-.btn-hero-primary:hover {
+.btn-hero:hover {
     background: var(--primary-dark);
     transform: translateY(-3px);
     box-shadow: 0 8px 30px rgba(10, 107, 138, 0.4);
 }
 
-.btn-hero-primary:active {
-    transform: scale(0.95);
-}
-
-/* Secondary hero button - Outlined with same style as primary but transparent */
-.btn-hero-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: transparent;
-    color: var(--primary);
-    padding: 16px 36px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.05rem;
-    border: 2px solid var(--primary);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-hero-secondary::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(10, 107, 138, 0.1);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.btn-hero-secondary:hover::before {
-    width: 400px;
-    height: 400px;
-}
-
-.btn-hero-secondary:hover {
-    background: var(--primary);
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(10, 107, 138, 0.25);
-}
-
-.btn-hero-secondary:active {
+.btn-hero:active {
     transform: scale(0.95);
 }
 
@@ -941,7 +892,7 @@ img {
     .nav-brand i {
         font-size: 1.6rem;
     }
-    .btn-hero-primary, .btn-hero-secondary {
+    .btn-hero {
         padding: 14px 28px;
         font-size: 0.95rem;
         width: 100%;
