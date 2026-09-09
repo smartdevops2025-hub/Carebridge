@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | BystanderCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+        .login-container {
+            max-width: 440px;
+            margin: 80px auto;
+            background: white;
+            padding: 48px 40px;
+            border-radius: 24px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+        }
+        .login-container h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .login-container p.sub {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e8edf2;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(10,107,138,0.1);
+        }
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-login:hover {
+            background: var(--primary-dark);
+        }
+        .login-footer {
+            text-align: center;
+            margin-top: 24px;
+            color: var(--text-light);
+        }
+        .login-footer a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--primary);
+        }
+        .social-login {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-login button {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e8edf2;
+            border-radius: 12px;
+            background: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .social-login button:hover {
+            border-color: var(--primary);
+            background: #f8fafc;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0;
+            color: var(--text-light);
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e8edf2;
+        }
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 30px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h2><i class="fas fa-sign-in-alt" style="color:var(--primary);margin-right:10px;"></i>Welcome Back</h2>
+        <p class="sub">Login to your BystanderCare account</p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Mobile Number or Email</label>
+                <input type="text" placeholder="9876543210 or you@example.com" required />
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password" required />
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <label style="display:flex;align-items:center;gap:8px;font-weight:400;font-size:0.9rem;">
+                    <input type="checkbox" /> Remember me
+                </label>
+                <a href="#" style="color:var(--primary);font-weight:500;font-size:0.9rem;">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-arrow-right"></i> Login
+            </button>
+        </form>
+
+        <div class="divider">or continue with</div>
+
+        <div class="social-login">
+            <button><i class="fab fa-google" style="color:#DB4437;"></i> Google</button>
+            <button><i class="fab fa-facebook" style="color:#1877F2;"></i> Facebook</button>
+        </div>
+
+        <div class="login-footer">
+            Don't have an account? <a href="patient-register.html">Register as Patient</a> or 
+            <a href="bystander-register.html">Register as Bystander</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('🔐 Login functionality will be implemented with backend integration.');
+        });
+    </script>
+</body>
+</html>
