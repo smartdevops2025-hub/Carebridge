@@ -1,6 +1,8 @@
+// ===== MAIN JAVASCRIPT =====
+
 // ===== MOBILE MENU =====
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const closeMobileMenu = document.getElementById('closeMobileMenu');
+const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
 const mobileMenu = document.getElementById('mobileMenu');
 
 if (mobileMenuBtn) {
@@ -10,8 +12,8 @@ if (mobileMenuBtn) {
     });
 }
 
-if (closeMobileMenu) {
-    closeMobileMenu.addEventListener('click', () => {
+if (closeMobileMenuBtn) {
+    closeMobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
         document.body.style.overflow = '';
     });
