@@ -52,6 +52,75 @@ img {
 }
 
 /* ===== BUTTONS ===== */
+
+/* Login button - Outlined style */
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 500;
+    border: 2px solid #d0dde6;
+    color: var(--text-dark);
+    background: transparent;
+    transition: var(--transition);
+    cursor: pointer;
+}
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(10, 107, 138, 0.05);
+}
+
+/* Register button - Same as Login but with animation */
+.register-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 500;
+    border: 2px solid #d0dde6;
+    color: var(--text-dark);
+    background: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ripple animation on hover */
+.register-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(10, 107, 138, 0.15);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.register-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.register-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(10, 107, 138, 0.05);
+    transform: translateY(-2px);
+}
+
+.register-btn:active {
+    transform: scale(0.95);
+}
+
+/* Primary button - Solid (used elsewhere) */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -72,49 +141,6 @@ img {
     box-shadow: 0 8px 24px rgba(10, 107, 138, 0.3);
 }
 
-/* ===== REGISTER BUTTON SPECIAL ANIMATION ===== */
-.register-btn {
-    position: relative;
-    overflow: hidden;
-    background: var(--primary);
-    color: var(--white);
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.register-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.register-btn:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.register-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 30px rgba(10, 107, 138, 0.4);
-}
-
-.register-btn:active {
-    transform: scale(0.95);
-}
-
 .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -133,22 +159,6 @@ img {
     background: var(--primary);
     color: var(--white);
     transform: translateY(-2px);
-}
-
-.btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 22px;
-    border-radius: 50px;
-    font-weight: 500;
-    border: 2px solid #d0dde6;
-    color: var(--text-dark);
-    transition: var(--transition);
-}
-.btn-outline:hover {
-    border-color: var(--primary);
-    color: var(--primary);
 }
 
 .btn-large {
