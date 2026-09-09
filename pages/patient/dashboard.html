@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Dashboard | Carebridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/dashboard-style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-hands-helping"></i>
+                <span>Care<span class="highlight">bridge</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="#">
+                    <i class="fas fa-calendar-check"></i> My Bookings
+                </a>
+                <a href="#">
+                    <i class="fas fa-user-md"></i> Find Bystander
+                </a>
+                <a href="#">
+                    <i class="fas fa-wallet"></i> Payments
+                </a>
+            </div>
+            <div class="nav-right">
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notif-badge">3</span>
+                </div>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=0a6b8a&color=fff" />
+                    <span>Rahul Sharma</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h1>Welcome back, Rahul! 👋</h1>
+                <p>Here's your care journey at a glance</p>
+            </div>
+            <div class="welcome-actions">
+                <button class="btn-primary">
+                    <i class="fas fa-plus"></i> New Booking
+                </button>
+                <button class="btn-secondary">
+                    <i class="fas fa-user-md"></i> Find Bystander
+                </button>
+            </div>
+        </section>
+
+        <!-- Patient Status Cards -->
+        <section class="status-cards">
+            <div class="status-card active">
+                <div class="status-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Active Bookings</h3>
+                    <p class="status-number">2</p>
+                    <span class="status-label">Currently in progress</span>
+                </div>
+            </div>
+            <div class="status-card completed">
+                <div class="status-icon">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Completed Services</h3>
+                    <p class="status-number">12</p>
+                    <span class="status-label">Total completed</span>
+                </div>
+            </div>
+            <div class="status-card pending">
+                <div class="status-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Upcoming Bookings</h3>
+                    <p class="status-number">3</p>
+                    <span class="status-label">Next: Dec 20, 2024</span>
+                </div>
+            </div>
+            <div class="status-card total">
+                <div class="status-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="status-info">
+                    <h3>Total Spent</h3>
+                    <p class="status-number">₹24,500</p>
+                    <span class="status-label">Lifetime spending</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Active Bookings -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2><i class="fas fa-spinner fa-spin"></i> Active Bookings</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="booking-cards">
+                <div class="booking-card active">
+                    <div class="booking-status-badge in-progress">In Progress</div>
+                    <div class="booking-header">
+                        <div class="bystander-info">
+                            <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=0a6b8a&color=fff" />
+                            <div>
+                                <h4>Priya Patel</h4>
+                                <span class="bystander-specialty">⭐ 4.9 · Elderly Care Specialist</span>
+                            </div>
+                        </div>
+                        <div class="booking-timer">
+                            <i class="fas fa-clock"></i>
+                            <span>2h 15m remaining</span>
+                        </div>
+                    </div>
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Service Type</span>
+                            <span class="detail-value">Elderly Care</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Start Date</span>
+                            <span class="detail-value">Dec 18, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Duration</span>
+                            <span class="detail-value">4 hours</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Amount</span>
+                            <span class="detail-value">₹1,200</span>
+                        </div>
+                    </div>
+                    <div class="booking-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <span class="progress-text">65% completed</span>
+                    </div>
+                    <div class="booking-actions">
+                        <button class="btn-chat"><i class="fas fa-comment"></i> Chat</button>
+                        <button class="btn-call"><i class="fas fa-phone"></i> Call</button>
+                        <button class="btn-track"><i class="fas fa-map-marker-alt"></i> Track Location</button>
+                    </div>
+                </div>
+
+                <div class="booking-card active">
+                    <div class="booking-status-badge scheduled">Scheduled</div>
+                    <div class="booking-header">
+                        <div class="bystander-info">
+                            <img src="https://ui-avatars.com/api/?name=Sunil+Kumar&background=0a6b8a&color=fff" />
+                            <div>
+                                <h4>Sunil Kumar</h4>
+                                <span class="bystander-specialty">⭐ 4.8 · Emergency Care</span>
+                            </div>
+                        </div>
+                        <div class="booking-timer">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Starts in 2 days</span>
+                        </div>
+                    </div>
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Service Type</span>
+                            <span class="detail-value">Emergency Support</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Start Date</span>
+                            <span class="detail-value">Dec 20, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Duration</span>
+                            <span class="detail-value">6 hours</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Amount</span>
+                            <span class="detail-value">₹2,400</span>
+                        </div>
+                    </div>
+                    <div class="booking-actions">
+                        <button class="btn-chat"><i class="fas fa-comment"></i> Chat</button>
+                        <button class="btn-call"><i class="fas fa-phone"></i> Call</button>
+                        <button class="btn-reschedule"><i class="fas fa-calendar-alt"></i> Reschedule</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking History -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2><i class="fas fa-history"></i> Booking History</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Bystander</th>
+                            <th>Service</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-015</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Neha+Jain&background=0a6b8a&color=fff" />
+                                    <span>Neha Jain</span>
+                                </div>
+                            </td>
+                            <td>Home Care</td>
+                            <td>Dec 15, 2024</td>
+                            <td>₹1,800</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>
+                                <button class="btn-detail"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-014</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Rajesh+Nair&background=0a6b8a&color=fff" />
+                                    <span>Rajesh Nair</span>
+                                </div>
+                            </td>
+                            <td>Hospital Stay</td>
+                            <td>Dec 12, 2024</td>
+                            <td>₹2,200</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>
+                                <button class="btn-detail"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-013</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Deepak+Verma&background=0a6b8a&color=fff" />
+                                    <span>Deepak Verma</span>
+                                </div>
+                            </td>
+                            <td>Elderly Care</td>
+                            <td>Dec 10, 2024</td>
+                            <td>₹1,500</td>
+                            <td><span class="status-badge cancelled">Cancelled</span></td>
+                            <td>
+                                <button class="btn-detail"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="booking-id">#BKG-2024-012</span></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=0a6b8a&color=fff" />
+                                    <span>Priya Patel</span>
+                                </div>
+                            </td>
+                            <td>Elderly Care</td>
+                            <td>Dec 8, 2024</td>
+                            <td>₹1,200</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>
+                                <button class="btn-detail"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <div class="pagination-info">Showing 1-4 of 12 bookings</div>
+                <div class="pagination-controls">
+                    <button disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts & Stats -->
+        <section class="charts-grid">
+            <div class="chart-card">
+                <h3>Booking Trends</h3>
+                <div class="chart-body">
+                    <canvas id="patientBookingChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Service Distribution</h3>
+                <div class="chart-body">
+                    <canvas id="patientServiceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment History -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2><i class="fas fa-receipt"></i> Recent Payments</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="payment-list">
+                <div class="payment-item">
+                    <div class="payment-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="payment-info">
+                        <h4>Payment to Priya Patel</h4>
+                        <span>Elderly Care - Dec 18, 2024</span>
+                    </div>
+                    <div class="payment-amount">-₹1,200</div>
+                    <span class="payment-status success">Paid</span>
+                </div>
+                <div class="payment-item">
+                    <div class="payment-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="payment-info">
+                        <h4>Payment to Sunil Kumar</h4>
+                        <span>Emergency Care - Dec 15, 2024</span>
+                    </div>
+                    <div class="payment-amount">-₹2,400</div>
+                    <span class="payment-status success">Paid</span>
+                </div>
+                <div class="payment-item">
+                    <div class="payment-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="payment-info">
+                        <h4>Payment to Rajesh Nair</h4>
+                        <span>Hospital Stay - Dec 12, 2024</span>
+                    </div>
+                    <div class="payment-amount">-₹2,200</div>
+                    <span class="payment-status pending">Pending</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Booking Trends Chart
+        const ctx1 = document.getElementById('patientBookingChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Nov', 'Dec 1-7', 'Dec 8-14', 'Dec 15-21', 'Dec 22-28'],
+                datasets: [{
+                    label: 'Bookings',
+                    data: [3, 5, 7, 4, 2],
+                    borderColor: '#0a6b8a',
+                    backgroundColor: 'rgba(10, 107, 138, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // Service Distribution Chart
+        const ctx2 = document.getElementById('patientServiceChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Elderly Care', 'Home Care', 'Hospital Stay', 'Emergency'],
+                datasets: [{
+                    data: [8, 5, 4, 2],
+                    backgroundColor: ['#f39c12', '#2ecc71', '#3498db', '#e74c3c'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
