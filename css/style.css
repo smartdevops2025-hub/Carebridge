@@ -123,6 +123,7 @@ img {
 .btn-hero {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     background: var(--primary);
     color: var(--white);
@@ -135,6 +136,8 @@ img {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    min-width: 220px;
+    text-align: center;
 }
 
 /* Ripple animation for both buttons */
@@ -897,6 +900,7 @@ img {
         font-size: 0.95rem;
         width: 100%;
         justify-content: center;
+        min-width: unset;
     }
     .hero-actions {
         flex-direction: column;
