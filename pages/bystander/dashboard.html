@@ -22,7 +22,7 @@
                 </a>
                 <a href="jobs.html">
                     <i class="fas fa-briefcase"></i> Available Jobs
-                    <span class="badge" id="jobCount">3</span>
+                    <span class="badge" id="jobCount">0</span>
                 </a>
                 <a href="#">
                     <i class="fas fa-calendar-check"></i> My Jobs
@@ -30,43 +30,42 @@
                 <a href="#">
                     <i class="fas fa-wallet"></i> Earnings
                 </a>
-                <a href="#">
-                    <i class="fas fa-user-cog"></i> Profile
-                </a>
             </div>
             <div class="nav-right">
                 <div class="availability-toggle">
-                    <span class="status-dot online" id="statusDot"></span>
-                    <span id="availabilityText">Available</span>
+                    <span class="status-dot offline" id="statusDot"></span>
+                    <span id="availabilityText">Unavailable</span>
                     <label class="switch">
-                        <input type="checkbox" checked id="availabilityToggle" />
+                        <input type="checkbox" id="availabilityToggle" />
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="notifications">
                     <i class="fas fa-bell"></i>
-                    <span class="notif-badge" id="notifCount">5</span>
+                    <span class="notif-badge" id="notifCount">0</span>
                 </div>
                 <div class="user-profile">
-                    <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=0a6b8a&color=fff" />
-                    <span id="bystanderName">Priya Patel</span>
+                    <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=0a6b8a&color=fff" id="profileImage" />
+                    <span id="bystanderName">Bystander</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
+                <button onclick="logout()" style="background:#fde8e8;color:#e74c3c;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
             </div>
         </div>
     </nav>
 
     <div class="dashboard-container">
-        <!-- Welcome Section -->
         <section class="welcome-section">
             <div class="welcome-text">
-                <h1>Welcome back, Priya! 👋</h1>
-                <p id="availabilityMessage">You are <strong>available</strong> for new jobs</p>
+                <h1 id="welcomeMessage">Welcome back! 👋</h1>
+                <p id="availabilityMessage">Loading your status...</p>
             </div>
             <div class="welcome-actions">
                 <button class="btn-primary" onclick="window.location.href='jobs.html'">
                     <i class="fas fa-briefcase"></i> View Available Jobs
-                    <span class="badge" id="headerJobCount" style="background:#e74c3c;color:white;padding:2px 8px;border-radius:50%;font-size:0.7rem;">3</span>
+                    <span class="badge" id="headerJobCount" style="background:#e74c3c;color:white;padding:2px 8px;border-radius:50%;font-size:0.7rem;">0</span>
                 </button>
                 <button class="btn-secondary">
                     <i class="fas fa-chart-line"></i> My Performance
@@ -74,27 +73,25 @@
             </div>
         </section>
 
-        <!-- Verification Banner -->
-        <section class="verification-banner verified">
+        <section class="verification-banner verified" id="verificationBanner">
             <div class="verification-icon"><i class="fas fa-check-circle"></i></div>
             <div class="verification-info">
-                <h3>✓ Verification Complete</h3>
-                <p>Your profile is fully verified. You're eligible to accept jobs.</p>
+                <h3 id="verificationTitle">Loading verification status...</h3>
+                <p id="verificationMessage">Please wait...</p>
             </div>
             <div class="verification-details">
-                <span><i class="fas fa-id-card"></i> Aadhaar Verified</span>
-                <span><i class="fas fa-file-invoice"></i> PAN Verified</span>
+                <span><i class="fas fa-id-card"></i> Aadhaar</span>
+                <span><i class="fas fa-file-invoice"></i> PAN</span>
                 <span><i class="fas fa-user-check"></i> Police Verification</span>
             </div>
         </section>
 
-        <!-- Stats Cards -->
         <section class="status-cards">
             <div class="status-card active">
                 <div class="status-icon"><i class="fas fa-briefcase"></i></div>
                 <div class="status-info">
                     <h3>Total Jobs</h3>
-                    <p class="status-number" id="totalJobs">48</p>
+                    <p class="status-number" id="totalJobs">0</p>
                     <span class="status-label">Lifetime completed</span>
                 </div>
             </div>
@@ -102,51 +99,54 @@
                 <div class="status-icon"><i class="fas fa-star"></i></div>
                 <div class="status-info">
                     <h3>Average Rating</h3>
-                    <p class="status-number" id="avgRating">4.9 ★</p>
-                    <span class="status-label" id="ratingCount">From 42 reviews</span>
+                    <p class="status-number" id="avgRating">0 ★</p>
+                    <span class="status-label" id="ratingCount">No reviews yet</span>
                 </div>
             </div>
             <div class="status-card pending">
                 <div class="status-icon"><i class="fas fa-clock"></i></div>
                 <div class="status-info">
                     <h3>Pending Jobs</h3>
-                    <p class="status-number" id="pendingJobs">3</p>
-                    <span class="status-label" id="nextJobDate">Next: Dec 20, 2024</span>
+                    <p class="status-number" id="pendingJobs">0</p>
+                    <span class="status-label" id="nextJobDate">No upcoming jobs</span>
                 </div>
             </div>
             <div class="status-card total">
                 <div class="status-icon"><i class="fas fa-money-bill-wave"></i></div>
                 <div class="status-info">
                     <h3>Total Earnings</h3>
-                    <p class="status-number" id="totalEarnings">₹1,42,500</p>
-                    <span class="status-label" id="monthlyEarnings">This month: ₹28,000</span>
+                    <p class="status-number" id="totalEarnings">₹0</p>
+                    <span class="status-label" id="monthlyEarnings">This month: ₹0</span>
                 </div>
             </div>
         </section>
 
-        <!-- Available Jobs Preview -->
         <section class="section-card">
             <div class="section-header">
                 <h2><i class="fas fa-bell"></i> New Job Requests</h2>
                 <a href="jobs.html" class="view-all">View All →</a>
             </div>
             <div id="jobRequestsPreview">
-                <!-- Preview of job requests - full list in jobs.html -->
+                <div style="text-align:center;padding:30px;color:var(--text-light);">
+                    <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--primary);"></i>
+                    <p style="margin-top:10px;">Loading job requests...</p>
+                </div>
             </div>
         </section>
 
-        <!-- Active Jobs -->
         <section class="section-card">
             <div class="section-header">
                 <h2><i class="fas fa-briefcase"></i> Active Jobs</h2>
                 <a href="#" class="view-all">View All →</a>
             </div>
             <div id="activeJobsContainer">
-                <!-- Dynamically populated -->
+                <div style="text-align:center;padding:30px;color:var(--text-light);">
+                    <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--primary);"></i>
+                    <p style="margin-top:10px;">Loading active jobs...</p>
+                </div>
             </div>
         </section>
 
-        <!-- Charts -->
         <section class="charts-grid">
             <div class="chart-card">
                 <h3>Earnings Overview</h3>
@@ -163,223 +163,6 @@
         </section>
     </div>
 
-    <script>
-        // ===== BYSTANDER DATA =====
-        const bystanderData = {
-            name: 'Priya Patel',
-            totalJobs: 48,
-            avgRating: 4.9,
-            ratingCount: 42,
-            pendingJobs: 3,
-            totalEarnings: 142500,
-            monthlyEarnings: 28000,
-            nextJobDate: 'Dec 20, 2024',
-            isAvailable: true,
-            // Job Requests (patients requesting service)
-            jobRequests: [
-                {
-                    id: '#REQ-2024-008',
-                    patient: 'Meera Nair',
-                    service: 'Home Care',
-                    location: 'Trivandrum, Kerala',
-                    date: 'Dec 20, 2024',
-                    duration: '4 hours',
-                    amount: 1500,
-                    urgency: 'High',
-                    timeAgo: '5 minutes ago'
-                },
-                {
-                    id: '#REQ-2024-009',
-                    patient: 'Ananya Reddy',
-                    service: 'Emergency Support',
-                    location: 'Kochi, Kerala',
-                    date: 'Dec 19, 2024',
-                    duration: '6 hours',
-                    amount: 2800,
-                    urgency: 'Critical',
-                    timeAgo: '15 minutes ago'
-                },
-                {
-                    id: '#REQ-2024-010',
-                    patient: 'Vikram Singh',
-                    service: 'Elderly Care',
-                    location: 'Kozhikode, Kerala',
-                    date: 'Dec 21, 2024',
-                    duration: '8 hours',
-                    amount: 2200,
-                    urgency: 'Medium',
-                    timeAgo: '45 minutes ago'
-                }
-            ],
-            activeJobs: [
-                {
-                    id: '#BKG-2024-015',
-                    patient: 'Rahul Sharma',
-                    service: 'Elderly Care',
-                    date: 'Dec 18, 2024',
-                    amount: 1200,
-                    status: 'in-progress',
-                    rating: 4.9,
-                    startTime: '9:00 AM',
-                    duration: '4 hours',
-                    timer: '2h 15m remaining',
-                    location: 'Kochi, Kerala'
-                }
-            ]
-        };
-
-        // ===== Populate Dashboard =====
-        function populateDashboard() {
-            // Update stats
-            document.getElementById('bystanderName').textContent = bystanderData.name;
-            document.getElementById('totalJobs').textContent = bystanderData.totalJobs;
-            document.getElementById('avgRating').textContent = `${bystanderData.avgRating} ★`;
-            document.getElementById('ratingCount').textContent = `From ${bystanderData.ratingCount} reviews`;
-            document.getElementById('pendingJobs').textContent = bystanderData.pendingJobs;
-            document.getElementById('totalEarnings').textContent = `₹${bystanderData.totalEarnings.toLocaleString()}`;
-            document.getElementById('monthlyEarnings').textContent = `This month: ₹${bystanderData.monthlyEarnings.toLocaleString()}`;
-            document.getElementById('nextJobDate').textContent = `Next: ${bystanderData.nextJobDate}`;
-            document.getElementById('jobCount').textContent = bystanderData.jobRequests.length;
-            document.getElementById('headerJobCount').textContent = bystanderData.jobRequests.length;
-
-            // Populate job requests preview (first 2)
-            const previewContainer = document.getElementById('jobRequestsPreview');
-            if (bystanderData.jobRequests.length === 0) {
-                previewContainer.innerHTML = `
-                    <div style="text-align:center;padding:30px;color:var(--text-light);">
-                        <i class="fas fa-check-circle" style="font-size:2rem;color:var(--success);"></i>
-                        <p style="margin-top:10px;">No new job requests. You're all caught up!</p>
-                    </div>
-                `;
-            } else {
-                const preview = bystanderData.jobRequests.slice(0, 2);
-                previewContainer.innerHTML = preview.map(request => `
-                    <div style="border:1px solid #eef3f7;border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s;background:${request.urgency === 'Critical' ? '#fef5f5' : 'white'}">
-                        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-                            <div style="display:flex;align-items:center;gap:12px;">
-                                <img src="https://ui-avatars.com/api/?name=${request.patient.replace(' ', '+')}&background=27ae60&color=fff" style="width:40px;height:40px;border-radius:50%;object-fit:cover;" />
-                                <div>
-                                    <h4 style="font-weight:700;font-size:0.95rem;">${request.patient}</h4>
-                                    <span style="font-size:0.8rem;color:var(--text-light);">${request.service} · ${request.location}</span>
-                                </div>
-                            </div>
-                            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
-                                <span style="font-weight:700;color:var(--primary);">₹${request.amount}</span>
-                                <span style="font-size:0.7rem;color:var(--text-light);">${request.timeAgo}</span>
-                            </div>
-                        </div>
-                        <div style="display:flex;gap:10px;margin-top:12px;border-top:1px solid #eef3f7;padding-top:12px;">
-                            <button class="btn-accept" onclick="window.location.href='jobs.html'" style="flex:1;padding:8px;background:var(--success);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">
-                                <i class="fas fa-check"></i> View & Accept
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            // Populate active jobs
-            const activeContainer = document.getElementById('activeJobsContainer');
-            if (bystanderData.activeJobs.length === 0) {
-                activeContainer.innerHTML = `
-                    <div style="text-align:center;padding:30px;color:var(--text-light);">
-                        <i class="fas fa-check-circle" style="font-size:2rem;color:var(--success);"></i>
-                        <p style="margin-top:10px;">No active jobs. Check available jobs above!</p>
-                    </div>
-                `;
-            } else {
-                activeContainer.innerHTML = bystanderData.activeJobs.map(job => `
-                    <div class="booking-card active" style="margin-bottom:12px;">
-                        <div class="booking-status-badge in-progress">In Progress</div>
-                        <div class="booking-header">
-                            <div class="patient-info">
-                                <img src="https://ui-avatars.com/api/?name=${job.patient.replace(' ', '+')}&background=27ae60&color=fff" />
-                                <div>
-                                    <h4>${job.patient}</h4>
-                                    <span class="patient-location"><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
-                                </div>
-                            </div>
-                            <div class="booking-timer">
-                                <i class="fas fa-clock"></i>
-                                <span>${job.timer}</span>
-                            </div>
-                        </div>
-                        <div class="booking-details">
-                            <div class="detail-item"><span class="detail-label">Service</span><span class="detail-value">${job.service}</span></div>
-                            <div class="detail-item"><span class="detail-label">Started</span><span class="detail-value">${job.date} ${job.startTime}</span></div>
-                            <div class="detail-item"><span class="detail-label">Duration</span><span class="detail-value">${job.duration}</span></div>
-                            <div class="detail-item"><span class="detail-label">Amount</span><span class="detail-value">₹${job.amount}</span></div>
-                        </div>
-                        <div class="booking-actions">
-                            <button class="btn-chat"><i class="fas fa-comment"></i> Chat</button>
-                            <button class="btn-call"><i class="fas fa-phone"></i> Call</button>
-                            <button class="btn-track"><i class="fas fa-map-marker-alt"></i> Share Location</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        // ===== Charts =====
-        function initCharts() {
-            new Chart(document.getElementById('earningsChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-                    datasets: [{
-                        label: 'Earnings (₹)',
-                        data: [6500, 8200, 7100, 9200],
-                        backgroundColor: ['#0a6b8a', '#2ecc71', '#3498db', '#f39c12'],
-                        borderRadius: 8
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } }
-                }
-            });
-
-            new Chart(document.getElementById('bystanderServiceChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Elderly Care', 'Home Care', 'Emergency', 'Hospital Stay'],
-                    datasets: [{
-                        data: [18, 12, 10, 8],
-                        backgroundColor: ['#f39c12', '#2ecc71', '#e74c3c', '#3498db'],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } }
-                }
-            });
-        }
-
-        // ===== Availability Toggle =====
-        document.getElementById('availabilityToggle').addEventListener('change', function() {
-            bystanderData.isAvailable = this.checked;
-            const statusDot = document.getElementById('statusDot');
-            const statusText = document.getElementById('availabilityText');
-            const message = document.getElementById('availabilityMessage');
-            
-            if (this.checked) {
-                statusDot.className = 'status-dot online';
-                statusText.textContent = 'Available';
-                message.innerHTML = 'You are <strong>available</strong> for new jobs';
-            } else {
-                statusDot.className = 'status-dot offline';
-                statusText.textContent = 'Unavailable';
-                message.innerHTML = 'You are <strong>unavailable</strong> for new jobs';
-            }
-        });
-
-        // ===== Initialize =====
-        document.addEventListener('DOMContentLoaded', function() {
-            populateDashboard();
-            initCharts();
-        });
-    </script>
+    <script src="../../js/bystander.js"></script>
 </body>
 </html>
