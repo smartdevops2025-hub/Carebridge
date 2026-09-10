@@ -36,10 +36,13 @@
                     <span class="notif-badge" id="notifCount">3</span>
                 </div>
                 <div class="user-profile">
-                    <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=0a6b8a&color=fff" />
-                    <span id="patientName">Rahul Sharma</span>
+                    <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=0a6b8a&color=fff" id="profileImage" />
+                    <span id="patientName">Patient</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
+                <button onclick="logout()" style="background:#fde8e8;color:#e74c3c;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
             </div>
         </div>
     </nav>
@@ -47,7 +50,7 @@
     <div class="dashboard-container">
         <section class="welcome-section">
             <div class="welcome-text">
-                <h1>Welcome back, Rahul! 👋</h1>
+                <h1 id="welcomeMessage">Welcome back! 👋</h1>
                 <p>Here's your personalized care journey</p>
             </div>
             <div class="welcome-actions">
@@ -60,14 +63,95 @@
             </div>
         </section>
 
-        <!-- Rest of dashboard content (same as before) -->
-        <!-- ... -->
+        <section class="status-cards">
+            <div class="status-card active">
+                <div class="status-icon"><i class="fas fa-spinner fa-spin"></i></div>
+                <div class="status-info">
+                    <h3>Active Bookings</h3>
+                    <p class="status-number" id="activeBookings">0</p>
+                    <span class="status-label">Currently in progress</span>
+                </div>
+            </div>
+            <div class="status-card completed">
+                <div class="status-icon"><i class="fas fa-check-double"></i></div>
+                <div class="status-info">
+                    <h3>Completed Services</h3>
+                    <p class="status-number" id="completedBookings">0</p>
+                    <span class="status-label">Total completed</span>
+                </div>
+            </div>
+            <div class="status-card pending">
+                <div class="status-icon"><i class="fas fa-clock"></i></div>
+                <div class="status-info">
+                    <h3>Upcoming Bookings</h3>
+                    <p class="status-number" id="upcomingBookings">0</p>
+                    <span class="status-label" id="nextBookingDate">No upcoming</span>
+                </div>
+            </div>
+            <div class="status-card total">
+                <div class="status-icon"><i class="fas fa-money-bill-wave"></i></div>
+                <div class="status-info">
+                    <h3>Total Spent</h3>
+                    <p class="status-number" id="totalSpent">₹0</p>
+                    <span class="status-label">Lifetime spending</span>
+                </div>
+            </div>
+        </section>
 
+        <section class="section-card">
+            <div class="section-header">
+                <h2><i class="fas fa-spinner fa-spin"></i> Active Bookings</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="booking-cards" id="activeBookingsList">
+                <div style="text-align:center;padding:30px;color:var(--text-light);">
+                    <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--primary);"></i>
+                    <p style="margin-top:10px;">Loading bookings...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-header">
+                <h2><i class="fas fa-history"></i> Booking History</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Bystander</th>
+                            <th>Service</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingHistory">
+                        <tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text-light);">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="charts-grid">
+            <div class="chart-card">
+                <h3>Booking Trends</h3>
+                <div class="chart-body">
+                    <canvas id="patientBookingChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Service Distribution</h3>
+                <div class="chart-body">
+                    <canvas id="patientServiceChart"></canvas>
+                </div>
+            </div>
+        </section>
     </div>
-    
-    <script>
-        // Same dashboard JavaScript as before
-        // ... 
-    </script>
+
+    <script src="../../js/patient.js"></script>
 </body>
 </html>
