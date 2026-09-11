@@ -1,5 +1,5 @@
 // ===== AUTHENTICATION SYSTEM =====
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://ideal-space-robot-g4vpw477wrj6396px-5000.app.github.dev/api';
 
 // ===== Open Auth Modal =====
 function openAuthModal(type, role = 'patient') {
